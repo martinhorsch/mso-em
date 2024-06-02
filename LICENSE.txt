@@ -1,6 +1,6 @@
 MSO-ES: Ontologies for modelling, simulation, optimization (MSO) and epistemic metadata (ES).
 
-(C)2024 by the BatCAT consortium in collaboration with the Knowledge Graph Alliance is licensed under Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0). 
+(C)2024 by the BatCAT consortium in collaboration with the Knowledge Graph Alliance.
+Licensed under Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0). 
 
 The license does not cover the content of the "legacy" folder which is included on the repository for development purposes only.
-

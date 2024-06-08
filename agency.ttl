@@ -7,6 +7,7 @@
 @prefix mso-em: <http://www.molmod.info/semantics/mso-em/>.
 
 @prefix pims-ii: <http://www.molmod.info/semantics/pims-ii.ttl#>.
+@prefix schema: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core/>.
 
 
@@ -15,46 +16,154 @@
 ##########################
 
 mso-em:Action a owl:Class;
-   skos:exactMatch pims-ii:Action;
    skos:prefLabel "Action"@en;
+   skos:altLabel "action"@en;
    rdfs:subClassOf [
       a owl:Restriction;
       owl:onProperty [owl:inverseOf mso-em:isAgentIn];
       owl:someValuesFrom mso-em:Agent
    ];
+   skos:exactMatch pims-ii:Action;
    skos:definition "action, i.e., a process that is conducted/undertaken by an agent"@en;
+   skos:closeMatch schema:Action;
    skos:scopeNote "An action has exactly one agent. An action does *not* require a purpose. But it does require an agent."@en.
 
 mso-em:Agent a owl:Class;
-   skos:exactMatch pims-ii:Agent;
    skos:prefLabel "Agent"@en;
+   skos:altLabel "agent"@en;
+   skos:exactMatch pims-ii:Agent;
    skos:definition "agent, i.e., an object that interacts with its surroundings by a) perceiving and b) doing, i.e., an object that carries out actions, including perceptive actions"@en.
 
 mso-em:Intention a owl:Class;
-   skos:exactMatch pims-ii:Intention;
    skos:prefLabel "Intention"@en;
-   rdfs:subClassOf mso-em:Proposition;  # note: This should be in another MSO-ES branch ontology
-   skos:definition "Intention, i.e., a proposition that constitutes an aim or goal"@en.
+   skos:altLabel "intention"@en;
+   skos:exactMatch pims-ii:Intention;
+   skos:definition "intention, i.e., a proposition that constitutes an aim or goal"@en.
 
 
-#####################################################
-# Relations defined over the highest-level concepts #
-#####################################################
+############################################
+# Properties of the highest-level concepts #
+############################################
 
 mso-em:isAgentIn a owl:ObjectProperty;
-   skos:exactMatch pims-ii:isAgentIn;
    skos:prefLabel "is agent in"@en;
    skos:altLabel "isAgentIn"@en;
    rdfs:domain mso-em:Agent;
    rdfs:range mso-em:Action;
+   skos:exactMatch pims-ii:isAgentIn;
    skos:definition "(x is agent in y) means that x is the agent that conducts/undertakes the action y."@en;
    skos:scopeNote "An action has exactly one agent."@en.
 
 mso-em:isAimIn a owl:ObjectProperty;
-   skos:exactMatch pims-ii:isAimIn;
    skos:prefLabel "is aim in"@en;
    skos:altLabel "isAimIn"@en;
    rdfs:domain mso-em:Intention;
    rdfs:range mso-em:Action;
+   skos:exactMatch pims-ii:isAimIn;
    skos:definition "(x is aim in y) means that y is a purposeful action, and x is one of the aims followed by the agent of y by undertaking y"@en;
    skos:scopeNote "No goal-directedness (awareness of the intention) is required on the side of the agent."@en.
+
+mso-em:isGoalFor a owl:ObjectProperty;
+   skos:prefLabel "is goal for"@en;
+   skos:altLabel "isGoalFor"@en;
+   rdfs:subPropertyOf mso-em:isGoalOf;
+   rdfs:domain mso-em:Intention;
+   rdfs:range mso-em:GoalDirectedAgent;
+   owl:propertyChainAxiom (mso-em:isAimIn [owl:inverseOf mso-em:isAgentIn]);
+   skos:exactMatch pims-ii:isGoalFor;
+   skos:definition "(x is goal for y) means that to the goal-directed agent y, the intention x represents something that is to be reached."@en;
+   skos:example "In (x is goal for y), if the agent x wants to go to Paris, y is not physically the city of Paris as a 4D object, but rather the associated intention, i.e., a mental or textual representation of the agent achieving the objective and reaching Paris."@en.
+
+mso-em:isGoalOf a owl:ObjectProperty;
+   skos:prefLabel "is goal of"@en;
+   skos:altLabel "isGoalOf"@en;
+   rdfs:domain mso-em:Intention;
+   rdfs:range mso-em:GoalOrientedAgent;
+   skos:exactMatch pims-ii:isGoalOf;
+   skos:definition "(x isGoalOf y) means that y is a goal-oriented agent with the tendency to work toward a state of affairs that is described/represented by y"@en;
+   skos:scopeNote "this does *not* imply that the agent x is aware of pursuing y as a goal, or that y is somehow included in x as a mental representation - for that purpose, use the relation 'isGoalFor'"@en.
+
+   
+########################
+# Subclasses of Action #
+########################
+
+mso-em:ExpressiveAct a owl:Class;
+   skos:prefLabel "ExpressiveAct"@en;
+   skos:altLabel "expressive act"@en;
+   rdfs:subClassOf mso-em:PurposefulAction, [
+      a owl:Restriction;
+      owl:onProperty [owl:inverseOf mso-em:isSpeakerIn];
+      owl:someValuesFrom mso-em:Interlocutor
+   ];
+   skos:exactMatch pims-ii:ExpressiveAct;
+   skos:definition "expressive act, i.e., a purposeful communication (e.g., a speech act or an analogous digital act of communicating) done by its agent, the 'speaker'"@en;
+   skos:scopeNote "The role of the 'speaker' must be understood in a generalized sense, i.e., not limited to speech. The purpose of the action consists in its illocutionary and perlocutionary intent."@en.
+
+mso-em:PurposefulAction a owl:Class;
+   skos:prefLabel "PurposefulAction"@en;
+   skos:altLabel "purposeful action"@en;
+   rdfs:subClassOf mso-em:Action, [
+      a owl:Restriction;
+      owl:onProperty [owl:inverseOf mso-em:isAgentIn];
+      owl:someValuesFrom mso-em:GoalDirectedAgent
+   ], [
+      a owl:Restriction;
+      owl:onProperty [owl:inverseOf mso-em:isAimIn];
+      owl:someValuesFrom mso-em:Intention
+   ];
+   skos:exactMatch pims-ii:PurposefulAction;
+   skos:definition "purposeful action, i.e., an action carried out with an aim of which its agent (hence, a goal-directed agent) is aware"@en.
+
+   
+#######################
+# Subclasses of Agent #
+#######################
+
+mso-em:GoalDirectedAgent a owl:Class;
+   skos:prefLabel "GoalDirectedAgent"@en;
+   skos:altLabel "goal-directed agent"@en;
+   rdfs:subClassOf mso-em:GoalOrientedAgent;
+   owl:equivalentClass [
+      a owl:Restriction;
+      owl:onProperty [owl:inverseOf mso-em:isGoalFor];
+      owl:someValuesFrom mso-em:Intention
+   ];
+   rdfs:comment "'Goal-directed agents are intelligent agents that have an internal representation of the goals they [tend to] achieve' (Conte, doi:10.1007/978-1-4614-1800-9_158, 2009)"@en;
+   skos:scopeNote "Goal-directedness requires an explicit internal representation of intentions/objectives/goals of the agent; that is what distinguishes it from goal orientation. In PIMS-II, goal orientation is denoted by the relation isGoalOf (which does not require an internal mental representation of the goal), whereas conscious goal directedness is denoted by the relation isGoalFor."@en.
+
+mso-em:GoalOrientedAgent a owl:Class;
+   skos:prefLabel "GoalOrientedAgent"@en;
+   skos:altLabel "goal-oriented agent"@en;
+   rdfs:subClassOf mso-em:Agent;
+   owl:equivalentClass [
+      a owl:Restriction;
+      owl:onProperty [owl:inverseOf mso-em:isGoalOf];
+      owl:someValuesFrom mso-em:Intention
+   ];
+   skos:exactMatch pims-ii:GoalOrientedAgent;
+   skos:definition "goal-oriented agent, i.e., an agent that exhibits the tendency 'to achieve a certain state of the world' (Conte, doi:10.1007/978-1-4614-1800-9_158, 2009)"@en;
+   skos:scopeNote "A goal of a goal-oriented agent is a descriptor/representamen for that state of the world, and it is also a descriptor/representament for the agent itself. Goal orientation can emerge by a multitude of mechanisms, including natural selection. It does *not* require the agent to be consciously aware of its goals. Here, goal orientation is denoted by the relation 'is goal of' (which does not require an internal mental representation of the goal), whereas conscious goal directedness is denoted by the relation 'is goal for'."@en.
+
+mso-em:Interlocutor a owl:Class;
+   skos:prefLabel "Interlocutor"@en;
+   skos:altLabel "interlocutor"@en;
+   rdfs:subClassOf mso-em:Agent;
+   skos:exactMatch pims-ii:Interlocutor;
+   skos:definition "Interlocutor, i.e., an agent that can be addressed and is capable of addressing others in a communication process"@en.
+
+
+#####################################
+# Properties of subclasses of Agent #
+#####################################
+
+mso-em:isSpeakerIn a owl:ObjectProperty;
+   skos:prefLabel "is speaker in"@en;
+   skos:altLabel "isAimIn"@en;
+   rdfs:label "isSpeakerIn"@en;
+   rdfs:subPropertyOf mso-em:isAgentIn;
+   rdfs:domain mso-em:Interlocutor;
+   rdfs:range mso-em:ExpressiveAct;
+   skos:exactMatch pims-ii:isSpeakerIn;
+   skos:definition "(x is speaker in y) means that x is the (only) speaker in the expressive act y."@en;
+   skos:scopeNote "The role of the speaker is to be understood as that of an agent that conducts/undertakes the expressive act, i.e., it is not limited to vocal speech."@en.

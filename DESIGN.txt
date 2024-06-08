@@ -1,0 +1,19 @@
+
+About the ontologies:
+ - Restricted to OWL 2 EL, see https://www.w3.org/TR/owl2-profiles/#OWL_2_EL
+ - Only define the concepts and relations that we think will really be used.
+ - Each ontology should have at most three taxonomy levels.
+ - Define relations only one way, by default, have the smaller/part/participant/etc. be the subject and the greater or whole be the object.
+ - Prefer higher-level relations to more specific relations, don't reproduce the taxonomy (conceptual hierarchy) through a matching hierarchy of relations. When we need to be more specific and have the choice, let us be specific through concepts rather than through relations.
+
+About compliance and alignment:
+ - Compliance and backward compatibility with PIMS-II
+ - Concepts in the present ontologies take "mso-em" prefix; if they are not taken over from PIMS-II but referenced, use "pims-ii" prefix.
+ - Use rdfs:subClassOf and rdfs:subPropertyOf only in reference to DOLCE, Metadata4Ing, and mso-em itself. Don't use skos:broader/narrower.
+ - Where it can be done, use skos:exactMatch for alignment with DOLCE, Metadata4Ing, and PIMS-II.
+ - Use skos:closeMatch where appropriate for D-SI, EMMO, schema.org, and any of the legacy ontologies other than PIMS-II.
+
+Style:
+ - For concepts, skos:prefLabel in camel case, with normal text as skos:altLabel
+ - For relations, skos:prefLabel as normal text, with camel case as skos:altLabel
+

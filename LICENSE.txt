@@ -1,4 +1,4 @@
-MSO-ES: Ontologies for modelling, simulation, optimization (MSO) and epistemic metadata (ES).
+MSO-EM: Ontologies for modelling, simulation, optimization (MSO) and epistemic metadata (EM).
 
 (C)2024 by the BatCAT consortium in collaboration with the Knowledge Graph Alliance.
 Licensed under Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0). 

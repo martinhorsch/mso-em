@@ -3,7 +3,8 @@ About the ontologies:
  - Restricted to OWL 2 EL, see https://www.w3.org/TR/owl2-profiles/#OWL_2_EL
  - Only define the concepts and relations that we think will really be used.
  - Each ontology should have at most three taxonomy levels.
- - Define relations only one way, by default, have the smaller/part/participant/etc. be the subject and the greater or whole be the object.
+ - Define relations only one way, by default, have the greater or whole be be the subject and the smaller/part/participant/etc. the object.
+   => This is because EL does not allow inverse relations, and the greater-to-smaller direction is much more frequently used in restrictions!
  - Prefer higher-level relations to more specific relations, don't reproduce the taxonomy (conceptual hierarchy) through a matching hierarchy of relations. When we need to be more specific and have the choice, let us be specific through concepts rather than through relations.
 
 About compliance and alignment:

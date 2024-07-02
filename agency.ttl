@@ -20,7 +20,7 @@ mso-em:Action a owl:Class;
    skos:altLabel "action"@en;
    rdfs:subClassOf [
       a owl:Restriction;
-      owl:onProperty [owl:inverseOf mso-em:isAgentIn];
+      owl:onProperty mso-em:hasAgent;
       owl:someValuesFrom mso-em:Agent
    ];
    skos:exactMatch pims-ii:Action;
@@ -45,22 +45,20 @@ mso-em:Intention a owl:Class;
 # Properties of the highest-level concepts #
 ############################################
 
-mso-em:isAgentIn a owl:ObjectProperty;
-   skos:prefLabel "is agent in"@en;
-   skos:altLabel "isAgentIn"@en;
-   rdfs:domain mso-em:Agent;
-   rdfs:range mso-em:Action;
-   skos:exactMatch pims-ii:isAgentIn;
-   skos:definition "(x is agent in y) means that x is the agent that conducts/undertakes the action y."@en;
+mso-em:hasAgent a owl:ObjectProperty;
+   skos:prefLabel "has agent"@en;
+   skos:altLabel "hasAgent"@en;
+   rdfs:domain mso-em:Action;
+   rdfs:range mso-em:Agent;
+   skos:definition "(x has agent y) means that y is the agent that conducts/undertakes the action x."@en;
    skos:scopeNote "An action has exactly one agent."@en.
 
-mso-em:isAimIn a owl:ObjectProperty;
-   skos:prefLabel "is aim in"@en;
-   skos:altLabel "isAimIn"@en;
-   rdfs:domain mso-em:Intention;
-   rdfs:range mso-em:Action;
-   skos:exactMatch pims-ii:isAimIn;
-   skos:definition "(x is aim in y) means that y is a purposeful action, and x is one of the aims followed by the agent of y by undertaking y"@en;
+mso-em:hasAim a owl:ObjectProperty;
+   skos:prefLabel "has aim"@en;
+   skos:altLabel "hasAim"@en;
+   rdfs:domain mso-em:Action;
+   rdfs:range mso-em:Intention;
+   skos:definition "(x has aim y) means that x is a purposeful action, and y is one of the aims followed by the agent of x by undertaking x"@en;
    skos:scopeNote "No goal-directedness (awareness of the intention) is required on the side of the agent."@en.
 
 mso-em:isGoalFor a owl:ObjectProperty;

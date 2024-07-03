@@ -146,5 +146,26 @@ mso-em:Interlocutor a owl:Class;
    skos:altLabel "Interlocutor"@en;
    rdfs:subClassOf mso-em:Agent;
    skos:exactMatch pims-ii:Interlocutor;
-   skos:definition "Interlocutor, i.e., an agent that can be addressed and is capable of addressing others in a communication process"@en.
+   skos:definition "interlocutor, i.e., an agent that can be addressed and is capable of addressing others in a communication process"@en.
 
+mso-em:KnowledgeBase a owl:Class;
+   skos:prefLabel "Knowledge base"@en;
+   skos:altLabel "KnowledgeBase"@en;
+   rdfs:subClassOf mso-em:Interlocutor;
+   skos:exactMatch pims-ii:KnowledgeBase;
+   rdfs:comment "knowledge base, i.e., an interlocutor that makes a consistent set of claims and will respond consistently if queried"@en.
+
+mso-em:Person a owl:Class;
+   skos:prefLabel "Person"@en;
+   skos:altLabel "Person"@en;
+   rdfs:subClassOf mso-em:Interlocutor;
+   skos:exactMatch pims-ii:Person;
+   skos:definition "person, i.e., an interlocutor that is socially identified as a natural or legal person by social convention that involves using a name (or multiple names) for it as rigid designators"@en.
+
+mso-em:Self a owl:Class;
+   skos:prefLabel "Self"@en;
+   skos:altLabel "Self"@en;
+   rdfs:subClassOf mso-em:Interlocutor;
+   skos:exactMatch pims-ii:ReferenceToSelf;
+   skos:definition "Self, i.e., an entity that *is* the present system, i.e., the system containing or communicating the present knowledge graph/triples, or a component of it (namely, the component holding/responsible for the present semantic content)"@en;
+   skos:example "If the present triples are processed by a research data infrastructure with a federated architecture, consisting of several repositories (which are interlocutors, i.e., they can be queried and communicate with the outside world), both the research data infrastructure as a whole and the individual repositories can be instances of the 'Self' class"@en.

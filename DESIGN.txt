@@ -3,8 +3,8 @@ About the ontologies:
  - Restricted to OWL 2 EL, see https://www.w3.org/TR/owl2-profiles/#OWL_2_EL
  - Only define the concepts and relations that we think will really be used.
  - Each ontology should have at most three taxonomy levels.
- - Define relations only one way, by default, have the greater or whole be be the subject and the smaller/part/participant/etc. the object.
-   => This is because EL does not allow inverse relations, and the greater-to-smaller direction is much more frequently used in restrictions!
+ - Define relations only one way, use the one is best suitable for formulating restrictions within OWL EL.
+   => Normally, this means that the greater or whole entity should be be the subject and the smaller/part/participant entity should be the object. This is because EL does not allow inverse relations, and the greater-to-smaller direction is more frequently used in restrictions.
  - Prefer higher-level relations to more specific relations, don't reproduce the taxonomy (conceptual hierarchy) through a matching hierarchy of relations. When we need to be more specific and have the choice, let us be specific through concepts rather than through relations.
 
 About compliance and alignment:
@@ -15,6 +15,6 @@ About compliance and alignment:
  - Use skos:closeMatch where appropriate for D-SI, EMMO, schema.org, and any of the legacy ontologies other than PIMS-II.
 
 Style:
- - For concepts, skos:prefLabel in camel case, with normal text as skos:altLabel
- - For relations, skos:prefLabel as normal text, with camel case as skos:altLabel
-
+ - skos:prefLabel as normal text, with camel case as IRI and skos:altLabel
+   => For concepts, begin the pref label with a capital letter (in the first word only); the camel-case alt label and IRI begins with a capital letter. Example: The IRI pims-ii:PurposefulAction corresponds to skos:altLabel "PurposefulAction"@en; the skos:prefLabel is "Purposeful action"@en, with a space and with only the first word capitalized.
+   => For relations, the pref label is all in lower case; the camel-case alt label and IRI begins with a lower-case letter. Example: The IRI pims-ii:isDoneBy corresponds to skos:altLabel "isDoneBy"@en; the skos:prefLabel is "is done by"@en, all in lower-case.

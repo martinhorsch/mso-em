@@ -6,6 +6,7 @@
 @base <http://www.molmod.info/semantics/mso-em/>.
 @prefix mso-em: <http://www.molmod.info/semantics/mso-em/>.
 
+@prefix dol: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#>.
 @prefix pims-ii: <http://www.molmod.info/semantics/pims-ii.ttl#>.
 @prefix schema: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core/>.
@@ -18,7 +19,7 @@
 mso-em:Action a owl:Class;
    skos:prefLabel "Action"@en;
    skos:altLabel "Action"@en;
-   rdfs:subClassOf [
+   rdfs:subClassOf dol:event, [
       a owl:Restriction;
       owl:onProperty mso-em:isDoneBy;
       owl:someValuesFrom mso-em:Agent
@@ -26,17 +27,20 @@ mso-em:Action a owl:Class;
    skos:exactMatch pims-ii:Action;
    skos:definition "action, i.e., a process that is done by an agent"@en;
    skos:closeMatch schema:Action;
-   skos:scopeNote "An action has exactly one agent. An action does *not* require a purpose. But it does require an agent."@en.
+   skos:scopeNote "An action has exactly one agent. An action does *not* require a purpose. But it does require an agent."@en;
+   skos:editorialNote "DOLCE defines two classes of perdurants: Event and Stative. The difference is 'whether [classification under a concept] holds of the mereological sum of two of its instances'. If it does, it is stative, if it does not, it is an event. Accordingly, Action must be subsumed under Event, since two actions combined are not necessarily also an action (they could be unrelated, or it would not make sense to say that the combined event 'has exactly one agent', which is something that we require of an action)."@en.
 
 mso-em:Agent a owl:Class;
    skos:prefLabel "Agent"@en;
    skos:altLabel "Agent"@en;
+   rdfs:subClassOf dol:physical-object;
    skos:exactMatch pims-ii:Agent;
    skos:definition "agent, i.e., an object that interacts with its surroundings by a) perceiving and b) doing, i.e., an object that carries out actions, including perceptive actions"@en.
 
 mso-em:Intention a owl:Class;
    skos:prefLabel "Intention"@en;
    skos:altLabel "Intention"@en;
+   rdfs:subClassOf dol:proposition;
    skos:exactMatch pims-ii:Intention;
    skos:definition "intention, i.e., a proposition that constitutes an aim or goal"@en.
 
@@ -44,15 +48,6 @@ mso-em:Intention a owl:Class;
 ############################################
 # Properties of the highest-level concepts #
 ############################################
-
-mso-em:isDirectedToward a owl:ObjectProperty;
-   skos:prefLabel "is directed toward"@en;
-   skos:altLabel "isDirectedToward"@en;
-   rdfs:subPropertyOf mso-em:isOrientedToward;
-   rdfs:domain mso-em:GoalDirectedAgent;
-   rdfs:range mso-em:Intention;
-   skos:definition "(x is directed toward y) means that to the goal-directed agent x, the intention y represents something that is to be reached."@en;
-   skos:example "In (x is directed toward y), if the agent y wants to go to Paris, x is *not* physically the city of Paris as a spacetime object, but rather the associated intention, i.e., a mental or textual *representation* of the agent achieving the objective and reaching Paris."@en.
 
 mso-em:isDoneBy a owl:ObjectProperty;
    skos:prefLabel "is done by"@en;
@@ -69,14 +64,6 @@ mso-em:isDoneFor a owl:ObjectProperty;
    rdfs:range mso-em:Intention;
    skos:definition "(x is done for y) means that x is a purposeful action, and y is one of the aims followed by the agent of x by undertaking x"@en;
    skos:scopeNote "No goal-directedness (awareness of the intention) is required on the side of the agent."@en.
-
-mso-em:isOrientedToward a owl:ObjectProperty;
-   skos:prefLabel "is oriented toward"@en;
-   skos:altLabel "isOrientedToward"@en;
-   rdfs:domain mso-em:GoalOrientedAgent;
-   rdfs:range mso-em:Intention;
-   skos:definition "(x is oriented toward y) means that x is a goal-oriented agent with the tendency to work toward a state of affairs that is described/represented by y"@en;
-   skos:scopeNote "this does *not* imply that the agent x is aware of pursuing y as a goal, or that y is somehow included in x as a mental representation - for that purpose, use the relation 'is directed toward'"@en.
 
    
 ########################
@@ -169,3 +156,25 @@ mso-em:Self a owl:Class;
    skos:exactMatch pims-ii:ReferenceToSelf;
    skos:definition "Self, i.e., an entity that *is* the present system, i.e., the system containing or communicating the present knowledge graph/triples, or a component of it (namely, the component holding/responsible for the present semantic content)"@en;
    skos:example "If the present triples are processed by a research data infrastructure with a federated architecture, consisting of several repositories (which are interlocutors, i.e., they can be queried and communicate with the outside world), both the research data infrastructure as a whole and the individual repositories can be instances of the 'Self' class"@en.
+
+
+#####################################
+# Properties of subclasses of Agent #
+#####################################
+
+mso-em:isDirectedToward a owl:ObjectProperty;
+   skos:prefLabel "is directed toward"@en;
+   skos:altLabel "isDirectedToward"@en;
+   rdfs:subPropertyOf mso-em:isOrientedToward;
+   rdfs:domain mso-em:GoalDirectedAgent;
+   rdfs:range mso-em:Intention;
+   skos:definition "(x is directed toward y) means that to the goal-directed agent x, the intention y represents something that is to be reached."@en;
+   skos:example "In (x is directed toward y), if the agent y wants to go to Paris, x is *not* physically the city of Paris as a spacetime object, but rather the associated intention, i.e., a mental or textual *representation* of the agent achieving the objective and reaching Paris."@en.
+
+mso-em:isOrientedToward a owl:ObjectProperty;
+   skos:prefLabel "is oriented toward"@en;
+   skos:altLabel "isOrientedToward"@en;
+   rdfs:domain mso-em:GoalOrientedAgent;
+   rdfs:range mso-em:Intention;
+   skos:definition "(x is oriented toward y) means that x is a goal-oriented agent with the tendency to work toward a state of affairs that is described/represented by y"@en;
+   skos:scopeNote "this does *not* imply that the agent x is aware of pursuing y as a goal, or that y is somehow included in x as a mental representation - for that purpose, use the relation 'is directed toward'"@en.

@@ -3,6 +3,7 @@ About the ontologies:
  - Restricted to OWL 2 EL, see https://www.w3.org/TR/owl2-profiles/#OWL_2_EL
  - Only define the concepts and relations that we think will really be used.
  - Each ontology should have at most three taxonomy levels.
+   => Every single module should *introduce* concepts at at most three taxonomy levels, it can *use* more. This does not include the concepts reused from other ontologies (DOLCE, Metadata4Ing), or naturally those defined in other modules to which a module connects.
  - Define relations only one way, use the one is best suitable for formulating restrictions within OWL EL.
    => Normally, this means that the greater or whole entity should be be the subject and the smaller/part/participant entity should be the object. This is because EL does not allow inverse relations, and the greater-to-smaller direction is more frequently used in restrictions.
  - Prefer higher-level relations to more specific relations, don't reproduce the taxonomy (conceptual hierarchy) through a matching hierarchy of relations. When we need to be more specific and have the choice, let us be specific through concepts rather than through relations.
@@ -22,5 +23,6 @@ Style:
    
 Referencing:
  - When one mso-em module references (uses) concepts or relations from another, only "lower" modules should use concepts from "higher" modules, referring to linear order according to the list below.
-   => agent.ttl (highest module, does not use any concepts/relations from other modules)
+   => dol-inclusions.ttl (highest module, does not make "hard" use any concepts/relations from other modules)
+   => agent.ttl (only uses the DOL inclusions in a "hard" way, such as subClassOf)
    => ...

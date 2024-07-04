@@ -1,0 +1,64 @@
+
+
+#####################################
+# MSO-EM inclusions from DOLCE Lite #
+#####################################
+
+@base <http://www.molmod.info/semantics/mso-em/>.
+@prefix mso-em: <http://www.molmod.info/semantics/mso-em/>.
+
+@prefix dol: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core/>.
+
+
+#######################################################################
+# DOLCE Lite concepts, made to conform with our formatting guidelines #
+#######################################################################
+
+dol:endurant a owl:Class;
+   skos:prefLabel "Endurant"@en;
+   skos:altLabel "Endurant"@en;
+   skos:scopeNote "The main characteristic of endurants is that all of them are independent essential wholes. This does not mean that the corresponding property (being an endurant) carries proper unity, since there is no common unity criterion for endurants. Within endurants, we distinguish between physical and non-physical endurants, according to whether they have direct spatial qualities. Within physical endurants, we distinguish between amounts of matter, objects, and features."@en;
+   skos:example "Endurants can 'genuinely' change in time, in the sense that the very same endurant as a whole can have incompatible properties at different times. To see this, suppose that an endurant - say 'this paper' - has a property at a time t 'it's white', and a different, incompatible property at time t' 'it's yellow': in both cases we refer to the whole object, without picking up any particular part of it."@en;
+   skos:editorialNote "taken from DOLCE Lite (http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl)"@en.
+
+dol:event a owl:Class;
+   skos:prefLabel "Event"@en;
+   skos:altLabel "Event"@en;
+   rdfs:subClassOf dol:perdurant;
+   skos:scopeNote "An occurrence-type is stative or eventive according to whether it holds of the mereological sum of two of its instances, i.e. if it is cumulative or not. Events do not require a description as a unifying criterion."@en;
+   skos:example "A sitting occurrence is stative (i.e., not an event!) since the sum of two sittings is always also a sitting occurrence."@en;
+   skos:example "For example, in the WordNet alignment, we have decided to put only some physical events under 'event', e.g. 'discharge', in order to stress the social orientedness of DLP."@en;
+   skos:example "For example, the same process 'rock erosion in the Sinni valley' can be conceptualized as an accomplishment (what has brought the current state that e.g. we are trying to explain), as an achievement (the erosion process as the result of a previous accomplishment), as a state (if we collapse the time interval of the erosion into a time point), or as an event (what has changed our focus from a state to another). In the erosion case, we could have good motivations to shift from one aspect to another: a) causation focus, b) effectual focus, c) condensation d) transition (causality).";
+   skos:editorialNote "taken from DOLCE Lite (http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl)"@en.
+
+dol:perdurant a owl:Class;
+   skos:prefLabel "Perdurant"@en;
+   skos:altLabel "Perdurant"@en;
+   skos:definition "Perdurants (AKA occurrences) comprise what are variously called events, processes, phenomena, activities and states. They can have temporal parts or spatial parts"@en;
+   skos:scopeNote "We assume that objects cannot be parts of occurrences, but rather they participate in them. Perdurants extend in time by accumulating different temporal parts, so that, at any time they are present, they are only partially present, in  the sense that some of their proper temporal parts (e.g., their previous or future phases) may be not present. Philosophers say that endurants are entities that are in time, while lacking temporal parts (so to speak, all their parts flow with them in time). Perdurants, on the contrary, are entities that happen in time, and can have temporal parts (all their parts are fixed in time)."@en;
+   skos:example "For instance, the first movement of (an execution of) a symphony is a temporal part of the symphony. On the other hand, the play performed by the left side of the orchestra is a spatial part. In both cases, these parts are occurrences themselves."@en;
+   skos:example "E.g., the piece of paper you are reading now is wholly present, while some temporal parts of your reading are not present yet, or any more."@en;
+   skos:editorialNote "taken from DOLCE Lite (http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl)"@en.
+
+dol:physical-endurant a owl:Class;
+   skos:prefLabel "Physical endurant"@en;
+   skos:altLabel "PhysicalEndurant"@en;
+   rdfs:subClassOf dol:endurant;
+   skos:definition "An endurant having a direct physical (at least spatial) quality."@en;
+   skos:editorialNote "taken from DOLCE Lite (http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl)"@en.
+
+dol:physical-object a owl:Class;
+   skos:prefLabel "Physical object"@en;
+   skos:altLabel "PhysicalObject"@en;
+   rdfs:subClassOf dol:physical-endurant;
+   skos:definition "The main characteristic of physical objects is that they are endurants with unity. However, they have no common unity criterion, since different subtypes of objects may have different unity criteria."@en;
+   skos:scopeNote "Differently from  aggregates, (most) physical objects change some of their parts while keeping their identity, they can have therefore temporary parts. Often physical objects (indeed, all endurants) are ontologically independent from occurrences (discussed below). However, if we admit that every object has a life, it is hard to exclude a mutual specific constant dependence between the two. Nevertheless, we may still use the notion of dependence to (weakly) characterize objects as being not specifically constantly dependent on other objects."@en;
+   skos:editorialNote "taken from DOLCE Lite (http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl)"@en.
+
+dol:proposition a owl:Class;
+   skos:prefLabel "Proposition"@en;
+   skos:altLabel "Proposition"@en;
+   skos:definition "The abstract content of a proposition."@en;
+   skos:scopeNote "Abstract content is purely combinatorial: from this viewpoint, any content that can be generated by means of combinatorial rules is assumed to exist in the domain of quantification (reified abstracts)."@en;
+   skos:editorialNote "taken from DOLCE Lite (http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl)"@en.

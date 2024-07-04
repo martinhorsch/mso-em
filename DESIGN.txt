@@ -10,9 +10,9 @@ About the ontologies:
 About compliance and alignment:
  - Compliance and backward compatibility with PIMS-II
  - Concepts in the present ontologies take "mso-em" prefix; if they are not taken over from PIMS-II but referenced, use "pims-ii" prefix.
- - Use rdfs:subClassOf and rdfs:subPropertyOf only in reference to DOLCE, Metadata4Ing, and mso-em itself. Don't use skos:broader/narrower.
- - Where it can be done, use skos:exactMatch for alignment with DOLCE, Metadata4Ing, and PIMS-II.
- - Use skos:closeMatch where appropriate for D-SI, EMMO, schema.org, and any of the legacy ontologies other than PIMS-II.
+ - Use rdfs:subClassOf and rdfs:subPropertyOf only in reference to DOLCE and mso-em itself. Don't use skos:broader/narrower.
+ - Where it can be done, use skos:exactMatch for alignment with DOLCE, Metadata4Ing (where it is aligned with PIMS-II from previous work), and PIMS-II.
+ - Use skos:closeMatch where appropriate for D-SI, EMMO, GPO, Metadata4Ing (where it is not aligned with PIMS-II), schema.org, and any of the legacy ontologies other than PIMS-II.
 
 Style:
  - skos:prefLabel as normal text, with camel case as IRI and skos:altLabel

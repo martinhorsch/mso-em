@@ -3,8 +3,8 @@
 # MSO-EM agency ontology #
 ##########################
 
-@base <https://batcat.info/semantics/mso-em/>.
-@prefix mso-em: <https://batcat.info/semantics/mso-em/>.
+@base <https://www.purl.org/mso-em#>.
+@prefix mso-em: <https://www.purl.org/mso-em#>.
 
 @prefix dol: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#>.
 @prefix pims-ii: <http://www.molmod.info/semantics/pims-ii.ttl#>.

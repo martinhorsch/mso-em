@@ -4,8 +4,8 @@
 # MSO-EM inclusions from DOLCE Lite #
 #####################################
 
-@base <https://batcat.info/semantics/mso-em/>.
-@prefix mso-em: <https://batcat.info/semantics/mso-em/>.
+@base <https://www.purl.org/mso-em#>.
+@prefix mso-em: <https://www.purl.org/mso-em#>.
 
 @prefix dol: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.

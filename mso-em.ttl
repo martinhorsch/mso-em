@@ -1,0 +1,24 @@
+
+####################################################
+# MSO-EM ontologies: File that imports all modules #
+####################################################
+
+@base <https://batcat.info/semantics/mso-em/>.
+
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix xs: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://batcat.info/semantics/mso-em/> a owl:Ontology;
+   owl:versionIRI <https://batcat.info/semantics/mso-em-2024-07/>;
+   owl:imports <https://batcat.info/semantics/mso-em-2024-07/dol-inclusions.ttl>;
+   owl:imports <https://batcat.info/semantics/mso-em-2024-07/agency.ttl>;
+   dcterms:title "MSO-EM: Ontologies for modelling, simulation, optimization (MSO) and epistemic metadata (EM) "^^xs:string;
+   owl:versionInfo "MSO-EM ontologies: Version dated July 2024"^^xs:string;
+   dcterms:issued "2024-07-10"^^xs:date;
+   dcterms:publisher "BatCAT consortium (Horizon Europe GA no. 101137725)"^^xs:string;
+   dcterms:license "https://creativecommons.org/licenses/by-nd/4.0/"^^xs:string;
+   dcterms:creator "Martin Thomas Horsch (ORCID 0000-0002-9464-6739)"^^xs:string;
+   vann:preferredNamespacePrefix "mso-em"^^xs:string;
+   vann:preferredNamespaceUri "https://batcat.info/semantics/mso-em/"^^xs:string.

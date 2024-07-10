@@ -4,6 +4,7 @@
 ####################################################
 
 @base <https://www.purl.org/mso-em#>.
+@prefix mso-em: <https://www.purl.org/mso-em#>.
 
 @prefix dcelem: <http://purl.org/dc/elements/1.1/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
@@ -11,9 +12,10 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
 @prefix xs: <http://www.w3.org/2001/XMLSchema#>.
 
-<https://www.purl.org/mso-em> a owl:Ontology;
+<https://www.purl.org/mso-em> a owl:Ontology, voaf:Vocabulary;
    owl:versionIRI <https://batcat.info/semantics/mso-em-2024-07/>;
    owl:imports <https://batcat.info/semantics/mso-em-2024-07/dol-inclusions.ttl>;
    owl:imports <https://batcat.info/semantics/mso-em-2024-07/agency.ttl>;
@@ -27,6 +29,6 @@
    dcterms:status ineurese:publishedVersion;
    dcterms:source <http://www.molmod.info/semantics/pims-ii.ttl>;
    vann:preferredNamespacePrefix "mso-em"^^xs:string;
-   vann:preferredNamespaceUri "https://batcat.info/semantics/mso-em/"^^xs:string;
+   vann:preferredNamespaceUri "https://www.purl.org/mso-em#"^^xs:string;
    dcelem:description "MSO-EM is a system of ontologies for documenting the knowledge status of models and data; the aim is to make models and data explainable-AI-ready (XAIR)."@en;
    dcterms:bibliographicCitation "M. T. Horsch, S. Chiacchiera, I. T. Todorov, A. T. Correia, A. Dey, N. A. Konchakova, S. Scholze, S. Stephan, K. Tøndel, A. Sarkar, M. H. Karray, F. Al Machot, B. Schembera, 'Exploration of key concepts required for mid- and domain-level ontology development to facilitate explainable-AI-readiness of data and models,' submitted, 2024."@en.

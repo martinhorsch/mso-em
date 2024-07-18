@@ -13,6 +13,7 @@
 @prefix schema: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix vann: <http://purl.org/vocab/vann/>.
+@prefix xs: <http://www.w3.org/2001/XMLSchema#>.
 
 <https://www.purl.org/mso-em-dol-inclusions> a owl:Ontology;
    owl:versionIRI <https://batcat.info/semantics/mso-em-2024-07/dol-inclusions.ttl>;

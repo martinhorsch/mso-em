@@ -17,11 +17,11 @@
 @prefix xs: <http://www.w3.org/2001/XMLSchema#>.
 
 <https://www.purl.org/mso-em-agency> a owl:Ontology;
-   owl:versionIRI <https://batcat.info/semantics/mso-em-2024-07/agency.ttl>;
+   owl:versionIRI <https://batcat.info/semantics/mso-em-2024-08/agency.ttl>;
    dcterms:title "MSO-EM module 'agency' (Action, Agent, Intention)"^^xs:string;
    dcterms:created "2024"^^dcterms:W3CDTF;
-   owl:versionInfo "MSO-EM module 'agency': Version dated July 2024"^^xs:string;
-   dcterms:issued "2024-07-18"^^dcterms:W3CDTF;
+   owl:versionInfo "MSO-EM module 'agency': Version dated August 2024"^^xs:string;
+   dcterms:issued "2024-08-16"^^dcterms:W3CDTF;
    dcterms:publisher "BatCAT consortium (Horizon Europe GA no. 101137725)"^^xs:string;
    dcterms:license <https://creativecommons.org/licenses/by-nd/4.0/>;
    dcterms:creator <https://orcid.org/0000-0002-9464-6739>;  # Martin Thomas Horsch
@@ -65,10 +65,10 @@ mso-em:Intention a owl:Class;
    skos:prefLabel "Intention"@en;
    rdfs:label     "Intention"@en;
    skos:altLabel "Intention"@en;
-   rdfs:subClassOf dol:proposition;
+   rdfs:subClassOf dol:physical-quality;
    skos:exactMatch pims-ii:Intention;
-   skos:definition "intention, i.e., a proposition that constitutes an aim or goal"@en;
-   rdfs:comment    "intention, i.e., a proposition that constitutes an aim or goal"@en.
+   skos:definition "intention, i.e., an agent's quality that constitutes the agent's aim or goal"@en;
+   rdfs:comment    "intention, i.e., an agent's quality that constitutes the agent's aim or goal"@en.
 
 
 ############################################
@@ -79,6 +79,7 @@ mso-em:isDoneBy a owl:ObjectProperty;
    skos:prefLabel "is done by"@en;
    rdfs:label     "is done by"@en;
    skos:altLabel "isDoneBy"@en;
+   rdfs:subPropertyOf dol:constant-participant;
    rdfs:domain mso-em:Action;
    rdfs:range mso-em:Agent;
    skos:definition "(x is done by y) means that y is the agent that conducts/undertakes the action x."@en;
@@ -89,11 +90,22 @@ mso-em:isDoneFor a owl:ObjectProperty;
    skos:prefLabel "is done for"@en;
    rdfs:label     "is done for"@en;
    skos:altLabel "isDoneFor"@en;
+   rdfs:subPropertyOf dol:has-quality;
    rdfs:domain mso-em:Action;
    rdfs:range mso-em:Intention;
    skos:definition "(x is done for y) means that x is a purposeful action, and y is one of the aims followed by the agent of x by undertaking x"@en;
    rdfs:comment    "(x is done for y) means that x is a purposeful action, and y is one of the aims followed by the agent of x by undertaking x"@en;
    skos:scopeNote "No goal-directedness (awareness of the intention) is required on the side of the agent."@en.
+
+mso-em:isDoneWith a owl:ObjectProperty;
+   skos:prefLabel "is done with"@en;
+   rdfs:label     "is done with"@en;
+   rdfs:subPropertyOf dol:participant;
+   skos:altLabel "isDoneWith"@en;
+   rdfs:domain mso-em:Action;
+   rdfs:range dol:endurant;
+   skos:definition "(x is done with y) means that y is a tool used for action x by its agent."@en;
+   rdfs:comment    "(x is done with y) means that y is a tool used for action x by its agent."@en.
 
    
 ########################
@@ -223,6 +235,7 @@ mso-em:isOrientedToward a owl:ObjectProperty;
    skos:prefLabel "is oriented toward"@en;
    rdfs:label     "is oriented toward"@en;
    skos:altLabel "isOrientedToward"@en;
+   rdfs:subPropertyOf dol:has-quality;
    rdfs:domain mso-em:GoalOrientedAgent;
    rdfs:range mso-em:Intention;
    skos:definition "(x is oriented toward y) means that x is a goal-oriented agent with the tendency to work toward a state of affairs that is described/represented by y"@en;

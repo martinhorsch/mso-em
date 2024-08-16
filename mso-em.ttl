@@ -15,7 +15,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#>.
 @prefix xs: <http://www.w3.org/2001/XMLSchema#>.
 
-<https://www.purl.org/mso-em> a owl:Ontology, voaf:Vocabulary;
+<https://www.purl.org/mso-em> a owl:Ontology;
    owl:versionIRI <https://batcat.info/semantics/mso-em-2024-08/>;
    owl:imports <https://batcat.info/semantics/mso-em-2024-08/dol-inclusions.ttl>;
    owl:imports <https://batcat.info/semantics/mso-em-2024-08/agency.ttl>;

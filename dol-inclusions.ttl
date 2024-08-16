@@ -129,7 +129,7 @@ dol:has-quality a owl:ObjectProperty;
    skos:prefLabel "has quality"@en;
    rdfs:label     "has quality"@en;
    skos:altLabel "hasQuality"@en;
-   skos:subPropertyOf dol:immediate-relation-i;
+   rdfs:subPropertyOf dol:immediate-relation-i;
    rdfs:range dol:quality;
    skos:definition "basic relation between something and one of its qualities; this is the opposite-of-default direction (the default-direction relation is called 'inherent-in')"@en;
    rdfs:comment    "basic relation between something and one of its qualities; this is the opposite-of-default direction (the default-direction relation is called 'inherent-in')"@en.
